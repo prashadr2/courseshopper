@@ -8,12 +8,10 @@ async function OrcaParse() {
     while(go){
         const page = await getpage(clink+offset.toString());
         offset+= 50;
-        // console.log(page);
-        allclasses.concat(page.slice());
+        allclasses = allclasses.concat(page.slice());
         if(page.length !== 50) go = false; 
     }
-    console.log(allclasses);
-    return allclasses.slice();
+    return allclasses;
 }
 
 async function getpage(link){

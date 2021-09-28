@@ -8,7 +8,7 @@ class Course extends React.Component(){
 
     }
 
-    ComponentDidMount(){
+    componentDidMount(){
 
     }
 
