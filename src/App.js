@@ -1,9 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { Component } from "react";
+import OrcaParse from "./OrcaParse"
 
 export default class App extends Component {
     render(){
+      OrcaParse().then(ret =>{
+        console.log(ret)
+      });
       return (
             <div className="App">
               <header className="App-header">
