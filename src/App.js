@@ -26,7 +26,7 @@ export default class App extends React.Component {
   
   componentDidMount(){
     OrcaParse().then(retval=>{
-      // console.log(retval)
+      console.log(retval)
       this.setState({courses: retval});
     });
   }
