@@ -1,34 +1,31 @@
 import './App.css';
-import React, { Component } from "react";
-import OrcaParse from "./OrcaParse"
+import Navbar from './components/Navbar/Navbar';
+//https://reactrouter.com/web/guides/quick-start
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
-export default class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      courses: []
-    }
-  }
+import Home from './components/Pages';
+import Login from './components/Pages/Login';
+import Signup from './components/Pages/Signup'
 
-  componentDidMount(){
-    OrcaParse().then(ret =>{
-      // console.log(ret);
-      this.setState({courses: ret});
-    });
-  }
+function App() {
+  return (
+    <div className="App">
 
-    render(){
-      console.log(this.state.courses); //when state is set in componentdidmount after orcaparse is done, the app will re-render
-      return (
-            <div className="App">
-              <header className="App-header">
-                {this.state.courses.map(obj=>{
-                  return(
-                    <p>{obj.title}</p>
-                  );
-                })}
-              </header>
-            </div>
-          );
-    }
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+        </Switch>
+      </Router>
+    </div>
+  );
 }
+
+export default App;

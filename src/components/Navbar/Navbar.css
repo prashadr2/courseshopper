@@ -1,0 +1,94 @@
+.Navbar{
+  background-color:#9370db;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.NavbarLogo{
+  color: white;
+  justify-self: start;
+  margin-left: 0px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 30px;
+}
+
+
+.Navbar .leftSide {
+  flex: 50%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex: 50%;
+  margin-left: 20px;
+}
+
+.leftSide input {
+  width: 300px;
+  height: 30px;
+  border: none;
+  border-radius:4px;
+  font-size: 20px;
+  margin-left: 15px;
+  color: red;
+}
+
+.leftSide button {
+  height: 32px;
+  width: 70px;
+  font-size: 16px;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+.Navbar .rightSide {
+  flex: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.Navbar .rightSide .menuLinks {
+  max-height: 80px;
+}
+
+.Navbar .rightSide #hidden {
+  display: none;
+  margin-left: 20px;
+}
+
+.Navbar .rightSide .menuLinks a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  margin-left: 25px;
+}
+
+.Navbar .rightSide .button {
+  display: none;
+  margin-left: 20px;
+}
+
+@media only screen and (max-width: 800px) {
+  .Navbar .rightSide .menuLinks a {
+    background-color: lightblue;
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .Navbar .rightSide .button {
+    display: flex;
+  }
+  .Navbar .rightSide #hidden {
+    position: absolute;
+    right: 0px;
+    top:8px;
+  }
+}
