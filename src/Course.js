@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import rethtml from './CourseInner.js'
 
 class Course extends React.Component(){
     constructor(props){
@@ -14,7 +15,7 @@ class Course extends React.Component(){
 
     render(){
         return(
-
+            <
         );
     }
 
