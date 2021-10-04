@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import { NavbarItems } from './NavbarItems'
 import './Navbar.css'
+import { auth, logout } from "../../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+
+
 
 export default function Navbar() {
   console.log(NavbarItems);
 
-  const [clicked, setClicked] = useState(false);
+  const [user] = useAuthState(auth);
   const [showItems, setShowItems] = useState(false);
 
   return (
@@ -18,12 +22,31 @@ export default function Navbar() {
       </div>
 
       <div className="rightSide">
-        <div className="menuLinks" id={showItems ? "hidden" :""}>
+        <div className="menuLinks" id={showItems ? "hidden" : ""}>
           {NavbarItems.map((item) => {
-            return (
-              <a className={item.className} href={item.url}>{item.title}</a>
-            )
+            if (item.title !== 'Login' && item.title !== 'Signup') {
+              return (
+                <a className={item.className} href={item.url}>{item.title}</a>
+              )
+            } else {
+              return (
+                !user && <a className={item.className} href={item.url}>{item.title}</a>
+              )
+            }
           })}
+          {user &&
+            <button style={{
+              background: "white",
+              border: "none",
+              borderRadius: "5px",
+              marginLeft: "25px",
+              fontSize: "18px",
+              color: "purple"
+            }}
+              onClick={logout}
+            >
+              Log Out
+            </button>}
         </div>
         <button className="button">Open</button>
       </div>
