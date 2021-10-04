@@ -70,9 +70,6 @@ button:hover{
   margin-left: 25px;
 }
 
-.Navbar .rightSide #logout {
-  background-color:  red;
-}
 .Navbar .rightSide .button {
   display: none;
   margin-left: 20px;
