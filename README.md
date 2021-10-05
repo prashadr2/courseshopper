@@ -17,6 +17,7 @@ You will also see any lint errors in the console.
 ## Commit Summary
 
 Title: Redid homepage
+
 Contributer: Alexia Leong
 
 Date: 10/4
