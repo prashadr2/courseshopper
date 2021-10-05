@@ -26,7 +26,7 @@ const Home = () => {
         position: 'absolute',
         left: '15%',
         right: '15%',
-        top: '75%',
+        top: '70%',
         backgroundColor: '#e9f7f1'
       }}>
         <div style = {{fontSize: '18px'}}>

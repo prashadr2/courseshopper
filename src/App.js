@@ -44,13 +44,6 @@ export default class App extends React.Component {
           </Switch>
         </Router>
       </div>
-      <div className="courselist"
-      style={{
-        position: 'absolute', left: '5%', top: '105%'}} >
-        {this.state.courses.map(course=>{
-          return(<p>{course.title}</p>);
-        })}
-      </div>
       </div>
     );
   }
