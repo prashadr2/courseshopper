@@ -15,9 +15,10 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 ## Changes Made
-Redid homepage:
+* Redid homepage:
 
 ![image](https://user-images.githubusercontent.com/33489293/135940267-015b62fe-ab8c-4267-86bd-8612bb66ea9f.png)
 
-and added logo images to the repo
+* Added logo images to the repo
+* Got rid of the list of classes that are printed on the homepage
 
