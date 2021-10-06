@@ -14,6 +14,25 @@ https://drive.google.com/file/d/1aB1AuPYsFwaA9WGU9vYv_UG7W8bx1mh5/view?usp=shari
 
 Url: http://localhost:3000/searchresult
 
+## Commit Summary
+
+Title: Redid homepage
+
+Contributer: Alexia Leong
+
+Date: 10/4
+
+Sprint: 3
+
+Summary:
+* Redid homepage:
+
+![image](https://user-images.githubusercontent.com/33489293/135940267-015b62fe-ab8c-4267-86bd-8612bb66ea9f.png)
+
+* Added logo images to the repo
+* Got rid of the list of classes that are printed on the homepage
+
+=======
 Structure:
 ```
 SearchPage

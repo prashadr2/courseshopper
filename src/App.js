@@ -48,9 +48,6 @@ export default class App extends React.Component {
             <Route path="/searchresult" component={SearchResult} />
           </Switch>
         </Router>
-        {
-          //add jsx here to display all coursecards that contain tags in this.state.tags
-        }
       </div>
     );
   }

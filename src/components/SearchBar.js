@@ -1,13 +1,14 @@
 import React from 'react'
+import '../App.css'
 
 const SearchBar = () => {
   return (
     <div>
       <div> 
         <input
-          className="input"
-          type="text"
-          placeholder="Search your courses"
+          class="form-control" 
+          type="text" 
+          placeholder="Search for courses"
         />
       </div>
     </div>
