@@ -1,0 +1,31 @@
+.courseCard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  border-style: solid;
+  border-width: 5px;
+  border-radius: 10px;
+  border-color: grey;
+}
+
+.courseCard .title {
+  color: white;
+  background-color: green;
+  height: 30px;
+  font-size: 24px;
+  border-radius: 3px;
+  text-align: left;
+}
+
+
+.courseCard .description {
+  background-color: lightgreen;
+  padding: 12px;
+}
+
+.tag {
+  color: grey;
+  font-size: 22px;
+}

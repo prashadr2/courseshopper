@@ -1,0 +1,9 @@
+.taglist .tag {
+  background-color: yellowgreen;
+  border-style: solid; 
+  border-width: 2px;
+  border-color: green;
+  border-radius: 5px;
+  margin-left: 5px;
+  font-size: 16px;
+}
