@@ -5,18 +5,25 @@ import rethtml from './CourseInner.js'
 class CourseCardInit extends React.Component(){
     constructor(props){
         super(props);
-        this.state = {crn: 1};
-
+        this.state  = {
+            orcacourses: []
+          }
     }
 
     componentDidMount(){
-
+        OrcaParse().then(retval => {
+            console.log(retval)
+            this.setState({orcacourses: retval});
+         });
     }
 
     render(){
         return(
-            <div></div>
+            <div>
+
+            </div>
         );
     }
 
 }
+

@@ -14,9 +14,28 @@ import Home from './components/Pages';
 import Login from './components/Pages/Login';
 import Signup from './components/Pages/Signup'
 import SearchResult from './components/SearchResult/SearchResult';
+import CourseList from './components/Course/CourseList';
+import OrcaParse from './OrcaParse';
 
+export default class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state  = {
+      usertags: [],
+      courses: []
+    }
+  }
 
-export default class App extends React.Component {  
+  componentDidMount(){
+   
+  }
+
+  addtag(tag){
+    this.setState({
+      tags: this.state.usertags.concat(tag)
+    })
+  }
+
   render(){
     return(
       <div className="App">
@@ -29,6 +48,9 @@ export default class App extends React.Component {
             <Route path="/searchresult" component={SearchResult} />
           </Switch>
         </Router>
+        {
+          //add jsx here to display all coursecards that contain tags in this.state.tags
+        }
       </div>
     );
   }
