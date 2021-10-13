@@ -4,8 +4,8 @@ import "./TagList.css"
 
 const TagList = (props) => {
   const [tags, setTags] = useState(["Communication Intensive", "Writing", "tag3"]);
-  console.log(tags);
-  console.log("hey");
+  // console.log(tags);
+  // console.log("hey");
   return (
     <div className="taglist" align="left">
       {tags.map((tag) => {

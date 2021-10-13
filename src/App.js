@@ -10,30 +10,20 @@ import {
   Link
 } from "react-router-dom";
 
-import Home from './components/Pages';
+import Home from './components/Pages/home';
 import Login from './components/Pages/Login';
 import Signup from './components/Pages/Signup'
 import SearchResult from './components/SearchResult/SearchResult';
-import CourseList from './components/Course/CourseList';
-import OrcaParse from './OrcaParse';
+import CoursePage from './components/Course/CoursePage'
+import CourseCart from './components/Course/CourseCart'
 
 export default class App extends React.Component {
   constructor(props){
     super(props);
-    this.state  = {
-      usertags: [],
-      courses: []
-    }
   }
 
   componentDidMount(){
    
-  }
-
-  addtag(tag){
-    this.setState({
-      tags: this.state.usertags.concat(tag)
-    })
   }
 
   render(){
@@ -46,11 +36,10 @@ export default class App extends React.Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/searchresult" component={SearchResult} />
+            <Route path="/coursepage" component={CoursePage} />
+            <Route path='/cart' component={CourseCart} />
           </Switch>
         </Router>
-        {
-          //add jsx here to display all coursecards that contain tags in this.state.tags
-        }
       </div>
     );
   }

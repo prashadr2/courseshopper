@@ -17,6 +17,7 @@ export default class CourseList extends React.Component {
       console.log(retval)
       this.setState({ courses: retval });
     });
+    console.log(this.state.courses);
   }
 
   render() {
@@ -24,8 +25,8 @@ export default class CourseList extends React.Component {
       <div className="courselist">
         {this.state.courses.map(course => {
           return <CourseCard
-            courseName={course.title}
-            courseTitle={course.subject_prefix}
+            coursePrefix={course.subject_prefix}
+            courseTitle={course.title}
             courseNumber={course.number} />
         })}
       </div>
