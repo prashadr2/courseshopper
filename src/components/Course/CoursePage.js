@@ -34,13 +34,13 @@ const CoursePage = (props) => {
         <p> {props.location.state.description}</p>
       </div>
       <div>
-        <button onclick="professorButton()">Professors</button>
+        <button onClick={null}>Professors</button>
       </div>
       <div>
         <button onClick={submitSyllabus}>Submit Syllabus</button>
       </div>
       <div>
-        <button onclick={() => dispatch(add(cid)) }>Add To Cart </button>
+        <button onClick={() => dispatch(add(cid)) }>Add To Cart </button>
       </div>
       <p>clist: {clist}</p>
 
