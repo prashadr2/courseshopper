@@ -1,35 +1,32 @@
 import OrcaParse from '../../OrcaParse'
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 import CourseCard from './CourseCard';
 
-
-
-export default class CourseList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      courses: []
-    }
-  }
-
-  componentDidMount() {
-    OrcaParse().then(retval => {
-      console.log(retval)
-      this.setState({ courses: retval });
-    });
-    console.log(this.state.courses);
-  }
-
-  render() {
+const CourseCart = () => {
+    const [maincourses, setCourses] = useState([]);
+    useEffect(()=>{
+        OrcaParse().then(retval => {
+            console.log(retval)
+            setCourses([...retval]);
+          });
+    },[]);
+    const clist = useSelector((state) => state.courses.courses);
     return (
-      <div className="courselist">
-        {this.state.courses.map(course => {
-          return <CourseCard
-            coursePrefix={course.subject_prefix}
-            courseTitle={course.title}
-            courseNumber={course.number} />
-        })}
-      </div>
-    );
-  }
+        <div>
+        <div>
+            <p>Courses Selected: {clist} </p>
+        </div>
+        <div className="courselist">
+          {maincourses.map(course => {
+            return <CourseCard
+              coursePrefix={course.subject_prefix}
+              courseTitle={course.title}
+              courseNumber={course.number} />
+          })}
+        </div>
+        </div>
+      );
 }
+
+export default CourseCart;
