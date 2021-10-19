@@ -2,6 +2,8 @@ import OrcaParse from '../../OrcaParse'
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import CourseCard from './CourseCard';
+import Loader from "react-loader-spinner";
+
 
 const CourseCart = () => {
     const [maincourses, setCourses] = useState([]);
@@ -12,7 +14,13 @@ const CourseCart = () => {
           });
     },[]);
     const clist = useSelector((state) => state.courses.courses);
-    return (
+
+    return (maincourses.length === 0 ? (<Loader
+        type="Puff"
+        color="#00BFFF"
+        height={900}
+        width={900}
+        timeout={15000} />) : (
         <div>
         <div>
             <p>Courses Selected: {clist} </p>
@@ -26,7 +34,7 @@ const CourseCart = () => {
           })}
         </div>
         </div>
-      );
+      ));
 }
 
 export default CourseCart;
