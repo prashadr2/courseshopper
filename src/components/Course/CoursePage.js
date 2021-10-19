@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux'
 import { add, remove } from '../../courseSlice'
-
+import Reviews from './Reviews'
 
 const submitSyllabus = () => {
   let request = {
@@ -43,7 +43,7 @@ const CoursePage = (props) => {
         <button onClick={() => dispatch(add(cid)) }>Add To Cart </button>
       </div>
       <p>clist: {clist}</p>
-
+      
 
     </div>
   );
