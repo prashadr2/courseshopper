@@ -12,7 +12,6 @@ const submitSyllabus = () => {
   }
   axios.post("https://course-shopper.herokuapp.com/syllabus", request).then(
     (response)=>{console.log(response);}, (error)=>{console.log(error);});
-  // axios.get("https://course-shopper.herokuapp.com/syllabus").then(rval=>{console.log(rval);}).catch(error=>{console.log(error);});
 }
 
 
@@ -37,14 +36,14 @@ const CoursePage = (props) => {
         <button onClick={null}>Professors</button>
       </div>
       <div>
-        <button onClick={submitSyllabus}>Submit Syllabus</button>
+        <button onClick={submitSyllabus}>Upload Syllabus</button>
       </div>
       <div>
         <button onClick={() => dispatch(add(cid)) }>Add To Cart </button>
       </div>
       <p>clist: {clist}</p>
-      
 
+    <Reviews courseTitle={props.location.state.courseTitle} coursePrefix={props.location.state.coursePrefix} courseNumber={props.location.state.courseNumber0} />
     </div>
   );
 

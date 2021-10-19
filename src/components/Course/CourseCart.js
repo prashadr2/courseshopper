@@ -16,8 +16,8 @@ const CourseCart = () => {
     const clist = useSelector((state) => state.courses.courses);
 
     return (maincourses.length === 0 ? (<Loader
-        type="Puff"
-        color="#00BFFF"
+        type="TailSpin"
+        color="#52f3cf"
         height={900}
         width={900}
         timeout={15000} />) : (
