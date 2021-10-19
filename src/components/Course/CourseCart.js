@@ -18,8 +18,8 @@ const CourseCart = () => {
     return (maincourses.length === 0 ? (<Loader
         type="TailSpin"
         color="#52f3cf"
-        height={900}
-        width={900}
+        height={100}
+        width={100}
         timeout={15000} />) : (
         <div>
         <div>

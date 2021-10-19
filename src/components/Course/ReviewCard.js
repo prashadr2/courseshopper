@@ -9,7 +9,7 @@ export default class ReviewCard extends React.Component {
     render(){
         return(
         <div>
-
+            <p>{this.props.name}: "{this.props.review}" --> Rating: {this.props.rating} </p>
         </div>
         );
     }
