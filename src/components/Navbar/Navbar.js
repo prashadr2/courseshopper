@@ -14,7 +14,7 @@ export default function Navbar() {
   return (
     <div className="Navbar">
       <div className="leftSide">
-        <Link href="/" className="NavbarLogo">CourseShopper</Link>
+        <Link to={{pathname:"/"}} className="NavbarLogo">CourseShopper</Link>
         <div className="NavbarIcon"></div>
         {/* <input type="text" placeholder="Search..." />
         <button>Search</button> */}
