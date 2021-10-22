@@ -10,29 +10,20 @@ const CoursePage = (props) => {
   const [upload, setUpload] = useState(false);
 
   const handleDrop = file =>{
-    var reader  = new FileReader();
     console.log(file);
-
-    reader.onabort = () => console.log('file reading was aborted')
-    reader.onerror = () => console.log('file reading has failed')
-
-    reader.onload = () => {
-      if(!!reader.result){
-        console.log('reader.result', reader.result); //reader.result is a binary str as of now!!!
-        let request = {
-          'pdf': reader.result,
-          'prefix': props.location.state.coursePrefix,
-          'number': props.location.state.courseNumber
-        }
-        axios.post("https://course-shopper.herokuapp.com/syllabus", request)
-        .then((response)=>{
-          console.log(response);
-          setUpload(true);
-        })
-        .catch(error=>{console.log(error);})
-      }
+    const formData = new FormData();
+    formData.append('pdf', file[0]);
+    formData.append('prefix', props.location.state.coursePrefix);
+    formData.append('number', props.location.state.courseNumber);
+    for (var key of formData.entries()) {
+      console.log(key[0] + ', ' + key[1]);
     }
-    reader.readAsText(file[0]);
+    axios.post("https://course-shopper.herokuapp.com/syllabus", formData)
+    .then((response)=>{
+      console.log(response);
+      setUpload(true);
+    })
+    .catch(error=>{console.log(error);})
   }
   const dispatch = useDispatch();
   const clist = useSelector((state) => state.courses.courses);
