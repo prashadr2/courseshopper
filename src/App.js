@@ -16,14 +16,22 @@ import Signup from './components/Pages/Signup'
 import SearchResult from './components/SearchResult/SearchResult';
 import CoursePage from './components/Course/CoursePage'
 import CourseCart from './components/Course/CourseCart'
+import Maintags from './components/Pages/Maintags'
 
-export default class App extends React.Component {
+import OrcaParse from './OrcaParse';
+import { useSelector, useDispatch, connect } from 'react-redux'
+import { update } from './orcaSlice'
+
+class App extends React.Component {
   constructor(props){
     super(props);
   }
 
   componentDidMount(){
-   
+    OrcaParse().then(retval=>{
+      this.props.updateCourses(retval);
+    })
+
   }
 
   render(){
@@ -38,9 +46,18 @@ export default class App extends React.Component {
             <Route path="/searchresult" component={SearchResult} />
             <Route path="/coursepage" component={CoursePage} />
             <Route path='/cart' component={CourseCart} />
+            <Route path='/maintags' component={Maintags} />
           </Switch>
         </Router>
       </div>
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateCourses: (courses) => {dispatch(update(courses))}
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App);

@@ -24,5 +24,10 @@ export const NavbarItems = [
     url: "cart",
     className:''
   },
+  {
+    title: "MainTags",
+    url: "maintags",
+    className:''
+  },
 ]
 

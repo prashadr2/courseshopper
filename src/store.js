@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
 import courseReducer from './courseSlice'
-import tagReducer from './tagSlice'
+import orcaReducer from './orcaSlice'
 export default configureStore({
   reducer: {
     courses: courseReducer,
-    tags: tagReducer,
+    allcourses: orcaReducer,
   },
 }) 

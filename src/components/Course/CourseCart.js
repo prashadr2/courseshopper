@@ -6,16 +6,9 @@ import Loader from "react-loader-spinner";
 
 
 const CourseCart = () => {
-    const [maincourses, setCourses] = useState([]);
-    useEffect(()=>{
-        OrcaParse().then(retval => {
-            console.log(retval)
-            setCourses([...retval]);
-          });
-    },[]);
+    const all = useSelector((state) => state.allcourses.allcourses);
     const clist = useSelector((state) => state.courses.courses);
-
-    return (maincourses.length === 0 ? (<Loader
+    return (all.length === 0 ? (<Loader
         type="TailSpin"
         color="#52f3cf"
         height={100}
@@ -26,7 +19,7 @@ const CourseCart = () => {
             <p>Courses Selected: {clist} </p>
         </div>
         <div className="courselist">
-          {maincourses.map(course => {
+          {all.map(course => {
             return <CourseCard
               coursePrefix={course.subject_prefix}
               courseTitle={course.title}
