@@ -29,6 +29,11 @@ class App extends React.Component {
 
   componentDidMount(){
     OrcaParse().then(retval=>{
+      //do post request here to get db tags
+      //map over retval, add tags attribute to each course object and set it equal to a list[] of tags from the db
+      retval.map(cobj=>{
+        cobj['tags'] = [cobj.subject_prefix];
+      })
       this.props.updateCourses(retval);
     })
 

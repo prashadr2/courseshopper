@@ -14,7 +14,7 @@ export default class CourseCard extends React.Component {
       courseTitle: this.props.courseTitle,
       courseNumber: this.props.courseNumber,
       coursePrefix: this.props.coursePrefix,
-      courseTags: [] //change this later to recieve a prop with database tag info
+      courseTags: this.props.courseTags //change this later to recieve a prop with database tag info
     }
   }
 
@@ -35,7 +35,7 @@ export default class CourseCard extends React.Component {
           </Link>
         </div>
         <div style={{ margin: "10px" }}>
-          <TagList />
+          <TagList tags={this.state.courseTags}/>
         </div>
         <div className="description">we need to find descriptions!!</div>
       </div>

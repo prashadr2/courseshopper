@@ -23,7 +23,8 @@ const CourseCart = () => {
             return <CourseCard
               coursePrefix={course.subject_prefix}
               courseTitle={course.title}
-              courseNumber={course.number} />
+              courseNumber={course.number}
+              courseTags={course.tags} />
           })}
         </div>
         </div>
