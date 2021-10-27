@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { PassThrough } from 'stream';
 
 export const courseSlice = createSlice({
   name: 'courses',
