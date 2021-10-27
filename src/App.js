@@ -17,6 +17,7 @@ import SearchResult from './components/SearchResult/SearchResult';
 import CoursePage from './components/Course/CoursePage'
 import CourseCart from './components/Course/CourseCart'
 import Maintags from './components/Pages/Maintags'
+import MaintagFilterList from './components/Pages/MaintagFilterList'
 
 import OrcaParse from './OrcaParse';
 import { useSelector, useDispatch, connect } from 'react-redux'
@@ -52,6 +53,7 @@ class App extends React.Component {
             <Route path="/coursepage" component={CoursePage} />
             <Route path='/cart' component={CourseCart} />
             <Route path='/maintags' component={Maintags} />
+            <Route path='/maintaglist' component={MaintagFilterList} />
           </Switch>
         </Router>
       </div>

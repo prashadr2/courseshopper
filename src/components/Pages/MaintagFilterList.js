@@ -1,37 +1,32 @@
-import { useSelector } from 'react-redux'
-import CourseCard from './CourseCard';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import CourseCard from '../Course/CourseCard';
 import Loader from "react-loader-spinner";
 
 
-const CourseCart = () => {
+const MaintagFilterList = (props) => {
     const all = useSelector((state) => state.allcourses.allcourses);
-    const clist = useSelector((state) => state.courses.courses);
+    console.log(props);
     return (all.length === 0 ? (<Loader
         type="TailSpin"
         color="#52f3cf"
         height={100}
         width={100}
-        timeout={15000} />) :
-        (clist.length === 0 ? (<div><p>Cart is empty!!</p></div>) :
-        (
+        timeout={15000} />) : (
         <div>
-        <div>
-            <p>Courses Selected: {clist} </p>
-        </div>
         <div className="courselist">
           {all.map(course => {
-              const compid = course.subject_prefix + '-' + course.number;
-              if(clist.includes(compid)){
+            if(course.tags.includes(props.location.state.maintagname)){
                 return <CourseCard
               coursePrefix={course.subject_prefix}
               courseTitle={course.title}
               courseNumber={course.number}
               courseTags={course.tags} />
-              }
+            }
           })}
         </div>
         </div>
-      )));
+      ));
 }
 
-export default CourseCart;
+export default MaintagFilterList;

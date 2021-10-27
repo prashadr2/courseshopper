@@ -59,6 +59,9 @@ const CoursePage = (props) => {
       <div>
         <button onClick={() => dispatch(add(cid)) }>Add Course To Cart </button>
       </div>
+      <div>
+        <button onClick={() => dispatch(remove(cid)) }>Remove Course From Cart </button>
+      </div>
     <Reviews courseTitle={props.location.state.courseTitle} coursePrefix={props.location.state.coursePrefix} courseNumber={props.location.state.courseNumber} />
     </div>
   );

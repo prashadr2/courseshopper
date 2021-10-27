@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { PassThrough } from 'stream';
 
 export const courseSlice = createSlice({
   name: 'courses',
@@ -10,7 +11,9 @@ export const courseSlice = createSlice({
         console.log(action.payload);
         const toadd = action.payload;
         const oldcourses = state.courses;
-        state.courses = [...oldcourses, toadd];
+        if(oldcourses.includes(toadd) === false){
+          state.courses = [...oldcourses, toadd];
+        }
     },
     remove: (state, action) => {
       const toremove = action.payload;
