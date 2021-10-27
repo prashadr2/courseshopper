@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { add, remove } from '../../courseSlice'
 import Reviews from './Reviews'
 import Dropzone from 'react-dropzone'
+import { ninvoke } from 'q';
 
 const CoursePage = (props) => {
   //required props: courseprefix, coursetitle, coursenumber
@@ -25,6 +26,29 @@ const CoursePage = (props) => {
     })
     .catch(error=>{console.log(error);})
   }
+
+  const getpdf = (e) => {
+    e.preventDefault();
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', "https://course-shopper.herokuapp.com/syllabus/" + props.location.state.coursePrefix + '/' + props.location.state.courseNumber, true);
+    xhr.responseType = 'blob';
+    xhr.onload = function() {
+        var blob = new Blob([xhr.response], {type:"application/pdf"});
+        var fileurl = URL.createObjectURL(blob);
+        window.open(fileurl);
+    }
+    xhr.send();
+    // axios.get("https://course-shopper.herokuapp.com/syllabus/" + props.location.state.coursePrefix + '/' + props.location.state.courseNumber)
+    // .then(retval=>{
+    //   console.log(retval);
+    //   const blob = new Blob([retval.data], {responseType: 'arraybuffer', type: 'application/pdf'});
+    //   const fileDownloadUrl = URL.createObjectURL(blob);
+    //   window.open(fileDownloadUrl);
+    // }).catch(error=>{
+    //   console.log(error);
+    // });
+  }
+
   const dispatch = useDispatch();
   const cid = props.location.state.coursePrefix + '-' + props.location.state.courseNumber;
   let buttontxt;
@@ -54,6 +78,9 @@ const CoursePage = (props) => {
             </div>
           )}
         </Dropzone>
+      </div>
+      <div>
+        <button onClick={(e) => getpdf(e)}>Download Syllabus</button> 
       </div>
       <div>
         <button onClick={() => dispatch(add(cid)) }>Add Course To Cart </button>
