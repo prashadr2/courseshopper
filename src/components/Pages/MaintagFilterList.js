@@ -5,7 +5,6 @@ import Loader from "react-loader-spinner";
 
 const MaintagFilterList = (props) => {
     const all = useSelector((state) => state.allcourses.allcourses);
-    console.log(props);
     return (all.length === 0 ? (<Loader
         type="TailSpin"
         color="#52f3cf"
@@ -21,7 +20,7 @@ const MaintagFilterList = (props) => {
               courseTitle={course.title}
               courseNumber={course.number}
               courseTags={course.tags} />
-            }
+            } else return null
           })}
         </div>
         </div>

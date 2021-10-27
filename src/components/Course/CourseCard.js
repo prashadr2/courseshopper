@@ -1,7 +1,6 @@
 import React from 'react'
 import './CourseCard.css'
 import TagList from './TagList'
-import CoursePage from './CoursePage'
 import {
   Link
 } from "react-router-dom";

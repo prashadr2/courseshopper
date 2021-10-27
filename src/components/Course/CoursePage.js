@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { add, remove } from '../../courseSlice'
 import Reviews from './Reviews'
 import Dropzone from 'react-dropzone'
@@ -26,7 +26,6 @@ const CoursePage = (props) => {
     .catch(error=>{console.log(error);})
   }
   const dispatch = useDispatch();
-  const clist = useSelector((state) => state.courses.courses);
   const cid = props.location.state.coursePrefix + '-' + props.location.state.courseNumber;
   let buttontxt;
   if(upload){

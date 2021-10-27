@@ -4,7 +4,7 @@ import "./TagList.css"
 const TagList = (props) => {
   return (
     <div className="taglist" align="left">
-      {props.tags.map((tag) => {
+      Tags:{props.tags.map((tag) => {
         return (
             <span className="tag" style={{padding:"5px"}}>{tag}</span>
         )

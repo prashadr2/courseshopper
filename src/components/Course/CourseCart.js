@@ -27,7 +27,7 @@ const CourseCart = () => {
               courseTitle={course.title}
               courseNumber={course.number}
               courseTags={course.tags} />
-              }
+              } else return null
           })}
         </div>
         </div>

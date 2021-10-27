@@ -1,13 +1,11 @@
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import React from 'react';
-import ReactDOM from 'react-dom';
 //https://reactrouter.com/web/guides/quick-start
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 import Home from './components/Pages/home';
@@ -20,20 +18,17 @@ import Maintags from './components/Pages/Maintags'
 import MaintagFilterList from './components/Pages/MaintagFilterList'
 
 import OrcaParse from './OrcaParse';
-import { useSelector, useDispatch, connect } from 'react-redux'
+import { connect } from 'react-redux'
 import { update } from './orcaSlice'
 
 class App extends React.Component {
-  constructor(props){
-    super(props);
-  }
-
   componentDidMount(){
     OrcaParse().then(retval=>{
       //do post request here to get db tags
       //map over retval, add tags attribute to each course object and set it equal to a list[] of tags from the db
       retval.map(cobj=>{
         cobj['tags'] = [cobj.subject_prefix];
+        return null;
       })
       this.props.updateCourses(retval);
     })
