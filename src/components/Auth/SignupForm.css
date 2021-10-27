@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  background-color: rgb(210, 184, 232);
+  background-color: rgba(139, 204, 161, 0.829);
   padding: 30px;
   width: 500px;
   border-radius: 30px;
