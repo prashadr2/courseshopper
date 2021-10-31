@@ -5,12 +5,14 @@ import { add, remove } from '../../courseSlice'
 import Reviews from './Reviews'
 import Dropzone from 'react-dropzone'
 import { ninvoke } from 'q';
+import './CoursePage.css';
+import { RatingView } from 'react-simple-star-rating';
 
 const CoursePage = (props) => {
   //required props: courseprefix, coursetitle, coursenumber
   const [upload, setUpload] = useState(false);
 
-  const handleDrop = file =>{
+  const handleDrop = file => {
     console.log(file);
     const formData = new FormData();
     formData.append('pdf', file[0]);
@@ -20,11 +22,11 @@ const CoursePage = (props) => {
       console.log(key[0] + ', ' + key[1]);
     }
     axios.post("https://course-shopper.herokuapp.com/syllabus", formData)
-    .then((response)=>{
-      console.log(response);
-      setUpload(true);
-    })
-    .catch(error=>{console.log(error);})
+      .then((response) => {
+        console.log(response);
+        setUpload(true);
+      })
+      .catch(error => { console.log(error); })
   }
 
   const getpdf = (e) => {
@@ -32,10 +34,10 @@ const CoursePage = (props) => {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', "https://course-shopper.herokuapp.com/syllabus/" + props.location.state.coursePrefix + '/' + props.location.state.courseNumber, true);
     xhr.responseType = 'blob';
-    xhr.onload = function() {
-        var blob = new Blob([xhr.response], {type:"application/pdf"});
-        var fileurl = URL.createObjectURL(blob);
-        window.open(fileurl);
+    xhr.onload = function () {
+      var blob = new Blob([xhr.response], { type: "application/pdf" });
+      var fileurl = URL.createObjectURL(blob);
+      window.open(fileurl);
     }
     xhr.send();
     // axios.get("https://course-shopper.herokuapp.com/syllabus/" + props.location.state.coursePrefix + '/' + props.location.state.courseNumber)
@@ -52,43 +54,55 @@ const CoursePage = (props) => {
   const dispatch = useDispatch();
   const cid = props.location.state.coursePrefix + '-' + props.location.state.courseNumber;
   let buttontxt;
-  if(upload){
+  if (upload) {
     buttontxt = "Syllabus submitted to database!"
   } else {
     buttontxt = "Click here to upload syllabus to database!"
   }
   return (
     <div className="coursepage">
-      <div>
-        <h1>{props.location.state.courseTitle} - {props.location.state.coursePrefix} {props.location.state.courseNumber}</h1>
+      <div className="courseTitle">
+        {props.location.state.coursePrefix} {props.location.state.courseNumber} - {props.location.state.courseTitle}
       </div>
       <div>
-        <p>
-          Prequisites/Corequisites: {props.location.state.prereqs} <br/>
-          When Offered: {props.location.state.termsoffered}
-        </p>
+        <button className="addBtn" onClick={() => { alert("Added " + props.location.state.courseTitle + " to Cart!"); dispatch(add(cid)) }} >Add Course to Cart</button>
+        <button className="rmvBtn" onClick={() => { alert("Removed " + props.location.state.courseTitle + " from Cart!"); dispatch(remove(cid)) }}>Remove from Cart</button>
+      </div>
+      <div className='courseInfo'>
+        Prequisites/Corequisites: {props.location.state.prereqs} <br />
+        When Offered: {props.location.state.termsoffered}
         <p> {props.location.state.description}</p>
       </div>
-      <div className="syllabussection">
-        <Dropzone onDrop={handleDrop}>
-          {({ getRootProps, getInputProps }) => (
-            <div {...getRootProps({ className: "dropzone" })}>
-              <input {...getInputProps()} />
-              <p>{buttontxt}</p>
+      <div class="row">
+        <div class="leftcolumn">
+          <div className="syllabus">
+            <div className="syllabussection">
+              <Dropzone onDrop={handleDrop}>
+                {({ getRootProps, getInputProps }) => (
+                  <div {...getRootProps({ className: "dropzone" })}>
+                    <input {...getInputProps()} />
+                    <p>{buttontxt}</p>
+                  </div>
+                )}
+              </Dropzone>
             </div>
-          )}
-        </Dropzone>
+            <div>
+              <button className='download' onClick={(e) => getpdf(e)}>Download Syllabus</button>
+            </div>
+          </div>
+          <div className="overall_rating">
+            overall rating
+            <div>4/5</div>
+          </div>
+        </div>
+        <div class="rightcolumn">
+          <div className='rating'>Teaching Quality <RatingView ratingValue={5} /></div>
+          <div className='rating'>Workload   <RatingView ratingValue={5} /></div>
+          <div className='rating'>Difficulty <RatingView ratingValue={5} /></div>
+          <div className='rating'>Practicability <RatingView ratingValue={5} /></div>
+        </div>
       </div>
-      <div>
-        <button onClick={(e) => getpdf(e)}>Download Syllabus</button> 
-      </div>
-      <div>
-        <button onClick={() => dispatch(add(cid)) }>Add Course To Cart </button>
-      </div>
-      <div>
-        <button onClick={() => dispatch(remove(cid)) }>Remove Course From Cart </button>
-      </div>
-    <Reviews courseTitle={props.location.state.courseTitle} coursePrefix={props.location.state.coursePrefix} courseNumber={props.location.state.courseNumber} />
+      <Reviews courseTitle={props.location.state.courseTitle} coursePrefix={props.location.state.coursePrefix} courseNumber={props.location.state.courseNumber} />
     </div>
   );
 
