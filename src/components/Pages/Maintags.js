@@ -6,8 +6,8 @@ export default class Maintags extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            science: ["ASTR Astronomy", "BCBP Biochemistry & Biophysics ", "BIOL", "CHEM", "CSCI", "ERTH", "IENV", "ISCI", "ITWS", "MATH", "MATP", "PHYS"],
-            hass: ["ARTS Arts", "COGS", "COMM", "ECON", "GSAS", "IHSS", "LANG", "LITR", "PHIL", "PSYC", "WRIT"],
+            science: ["ASTR", "BCBP", "BIOL", "CHEM", "CSCI", "ERTH", "IENV", "ISCI", "ITWS", "MATH", "MATP", "PHYS"],
+            hass: ["ARTS", "COGS", "COMM", "ECON", "GSAS", "IHSS", "LANG", "LITR", "PHIL", "PSYC", "WRIT"],
             eng: ["BMED", "CHME", "CIVL", "ECSE", "ENGR", "ENVE", "ISYE", "MANE", "MTLE"],
             other: ["ADMN", "STSO", "USAF", "USAR", "USAR", "USNA"],
             arche: ["ARCH", "LGHT"],
@@ -77,7 +77,7 @@ export default class Maintags extends React.Component {
                             </div>
                         </div>
                         <div>
-                            <div className="departmentTitle">Other</div>
+                        <div className="departmentTitle">Engineer</div>
                             <div>
                                 {this.state.other.map(prefix => <MaintagDisplay name={prefix} />)}
                             </div>
