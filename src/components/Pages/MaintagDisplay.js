@@ -1,21 +1,21 @@
 import React from 'react'
-import "../Course/TagList.css"
+import './MaintagDisplay.css';
 import {
     Link
 } from "react-router-dom";
 
 const MaintagDisplay = (props) => {
-    return(
+    return (
         <div>
             <div className="taglist" style={{ margin: "10px" }}>
-            <Link to={{
-                pathname: '/maintaglist',
-                state:{
-                    maintagname: props.name
-                }
-            }}>
-            <span className="tag">{props.name}</span>
-            </Link>
+                <Link to={{
+                    pathname: '/maintaglist',
+                    state: {
+                        maintagname: props.name
+                    }
+                }}>
+                    <div className="tag" style={{fontSize:"25px"}}>{props.name}</div>
+                </Link>
             </div>
         </div>
     );
