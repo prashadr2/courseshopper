@@ -77,7 +77,7 @@ export default class Maintags extends React.Component {
                             </div>
                         </div>
                         <div>
-                        <div className="departmentTitle">Engineer</div>
+                        <div className="departmentTitle">Other</div>
                             <div>
                                 {this.state.other.map(prefix => <MaintagDisplay name={prefix} />)}
                             </div>
