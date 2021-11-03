@@ -24,7 +24,7 @@ export default class CourseCard extends React.Component {
     axios.get("https://course-shopper.herokuapp.com/course/" + this.state.coursePrefix + "/" + this.state.courseNumber)
     .then((retval)=>{
       this.setState({
-        courseDesc: retval
+        courseDesc: retval.data.description.slice()
       })
     })
     .catch((error) => {console.log(error);});
@@ -41,6 +41,7 @@ export default class CourseCard extends React.Component {
               courseTitle: this.state.courseTitle,
               courseNumber: this.state.courseNumber,
               coursePrefix: this.state.coursePrefix,
+              description: this.state.courseDesc
             }
           }} style={{textDecoration: "none", color:"white"}}> 
           {this.state.courseTitle} - {this.state.coursePrefix} {this.state.courseNumber}

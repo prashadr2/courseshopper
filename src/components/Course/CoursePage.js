@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux'
 import { add, remove } from '../../courseSlice'
@@ -6,11 +6,29 @@ import Reviews from './Reviews'
 import Dropzone from 'react-dropzone'
 import { ninvoke } from 'q';
 import './CoursePage.css';
-import { RatingView } from 'react-simple-star-rating';
+import StarRatings from 'react-star-ratings';
 
 const CoursePage = (props) => {
   //required props: courseprefix, coursetitle, coursenumber
   const [upload, setUpload] = useState(false);
+  const [qrating, setQ] = useState(0.0);
+  const [wrating, setW] = useState(0.0);
+  const [prating, setP] = useState(0.0);
+  const [drating, setD] = useState(0.0);
+  const [overall, setO] = useState(0.0);
+
+  useEffect(() => {
+    axios.get("https://course-shopper.herokuapp.com/ravg/" + props.location.state.coursePrefix + "/" + props.location.state.courseNumber)
+    .then((retval)=>{
+      setQ(retval.data.qrating);
+      setW(retval.data.wrating);
+      setP(retval.data.prating);
+      setD(retval.data.drating);
+      setO(retval.data.overall);
+    })
+    .catch((error) => {console.log(error);});
+  });
+
 
   const handleDrop = file => {
     console.log(file);
@@ -59,6 +77,7 @@ const CoursePage = (props) => {
   } else {
     buttontxt = "Click here to upload syllabus to database!"
   }
+
   return (
     <div className="coursepage">
       <div className="courseTitle">
@@ -70,7 +89,8 @@ const CoursePage = (props) => {
       </div>
       <div className='courseInfo'>
         Prequisites/Corequisites: {props.location.state.prereqs} <br />
-        When Offered: {props.location.state.termsoffered}
+        When Offered: {props.location.state.termsoffered} <br/>
+        <br/>
         <p> {props.location.state.description}</p>
       </div>
       <div class="row">
@@ -92,14 +112,14 @@ const CoursePage = (props) => {
           </div>
           <div className="overall_rating">
             overall rating
-            <div>4/5</div>
+            <div>{overall}/5</div>
           </div>
         </div>
         <div class="rightcolumn">
-          <div className='rating'>Teaching Quality <RatingView ratingValue={5} /></div>
-          <div className='rating'>Workload   <RatingView ratingValue={5} /></div>
-          <div className='rating'>Difficulty <RatingView ratingValue={5} /></div>
-          <div className='rating'>Practicability <RatingView ratingValue={5} /></div>
+          <div className='rating'>Teaching Quality <StarRatings rating={qrating} name="qrate"/></div>
+          <div className='rating'>Workload   <StarRatings rating={wrating} name="wrate"/></div>
+          <div className='rating'>Difficulty <StarRatings rating={drating} name="drate"/></div>
+          <div className='rating'>Practicability <StarRatings rating={prating}  name="prate"/></div>
         </div>
       </div>
       <Reviews courseTitle={props.location.state.courseTitle} coursePrefix={props.location.state.coursePrefix} courseNumber={props.location.state.courseNumber} />
