@@ -4,6 +4,7 @@ import TagList from './TagList'
 import {
   Link
 } from "react-router-dom";
+import axios from 'axios';
 
  
 export default class CourseCard extends React.Component {
@@ -13,8 +14,20 @@ export default class CourseCard extends React.Component {
       courseTitle: this.props.courseTitle,
       courseNumber: this.props.courseNumber,
       coursePrefix: this.props.coursePrefix,
-      courseTags: this.props.courseTags //change this later to recieve a prop with database tag info
+      courseTags: this.props.courseTags, //change this later to recieve a prop with database tag info
+      courseDesc: ""
     }
+  }
+
+
+  componentDidMount(){
+    axios.get("https://course-shopper.herokuapp.com/course/" + this.state.coursePrefix + "/" + this.state.courseNumber)
+    .then((retval)=>{
+      this.setState({
+        courseDesc: retval
+      })
+    })
+    .catch((error) => {console.log(error);});
   }
 
 
@@ -36,7 +49,7 @@ export default class CourseCard extends React.Component {
         <div style={{ margin: "10px" }}>
           <TagList tags={this.state.courseTags}/>
         </div>
-        <div className="description">we need to find descriptions!!</div>
+        <div className="description">{this.state.courseDesc}</div>
       </div>
     )
   }
