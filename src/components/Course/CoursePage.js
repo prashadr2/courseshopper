@@ -116,10 +116,10 @@ const CoursePage = (props) => {
           </div>
         </div>
         <div class="rightcolumn">
-          <div className='rating'>Teaching Quality <StarRatings rating={qrating} name="qrate"/></div>
-          <div className='rating'>Workload   <StarRatings rating={wrating} name="wrate"/></div>
-          <div className='rating'>Difficulty <StarRatings rating={drating} name="drate"/></div>
-          <div className='rating'>Practicability <StarRatings rating={prating}  name="prate"/></div>
+          <div className='rating'>Teaching Quality <StarRatings starRatedColor="green" rating={qrating} name="qrate"/></div>
+          <div className='rating'>Workload   <StarRatings starRatedColor="green" rating={wrating} name="wrate"/></div>
+          <div className='rating'>Difficulty <StarRatings starRatedColor="green" rating={drating} name="drate"/></div>
+          <div className='rating'>Practicability <StarRatings starRatedColor="green" rating={prating}  name="prate"/></div>
         </div>
       </div>
       <Reviews courseTitle={props.location.state.courseTitle} coursePrefix={props.location.state.coursePrefix} courseNumber={props.location.state.courseNumber} />

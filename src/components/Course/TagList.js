@@ -6,7 +6,7 @@ const TagList = (props) => {
     <div className="taglist" align="left">
       Tags:{props.tags.map((tag) => {
         return (
-            <span className="tag" style={{padding:"5px"}}>{tag}</span>
+            <span className="tag" style={{padding:"5px",fontSize:'16px'}}>{tag}</span>
         )
       })}
     </div>

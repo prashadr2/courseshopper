@@ -41,6 +41,7 @@ export default class Reviews extends React.Component {
     }
 
     sendReviews(event) {
+        alert("The review was submitted");
         let request = {
             'text': this.state.review,
             'prefix': this.state.coursePrefix,
@@ -61,33 +62,39 @@ export default class Reviews extends React.Component {
     }
 
     handleRating(rating, name) {
-        if(name === "qrate"){
-          this.setState({
-              qrating: rating
-          })
-        } else if(name === "wrate"){
+        if (name === "qrate") {
+            this.setState({
+                qrating: rating
+            })
+        } else if (name === "wrate") {
             this.setState({
                 wrating: rating
             })
-        } else if(name === "drate"){
+        } else if (name === "drate") {
             this.setState({
                 drating: rating
             })
-        } else if(name === "prate"){
+        } else if (name === "prate") {
             this.setState({
                 prating: rating
             })
         } else {
-          console.log("this should never happen");
+            console.log("this should never happen");
         }
-      }
+    }
 
     render() {
         let allcards;
         if (this.state.reviews.length === 0) {
             allcards = <Loader type="TailSpin" color="#52f3cf" height={100} width={100} timeout={15000} />
         } else {
-            allcards = this.state.reviews.map(review => { return <ReviewCard name={review.reviewer} review={review.text} rating={review.rating} /> });
+            allcards = this.state.reviews.map(review => {
+                return <ReviewCard
+                    name={review.reviewer}
+                    review={review.text}
+                    rating={review.rating}
+                />
+            });
         }
         return (
             <div>
@@ -100,11 +107,11 @@ export default class Reviews extends React.Component {
                 <div >
                     <form className="reviewForm" onSubmit={this.sendReviews}>
                         <label style={{ fontSize: "36px" }}> Leave a review: </label><br />
-                        <div className='rating'>Teaching Quality <StarRatings rating={this.state.qrating} starRatedColor="blue" changeRating={this.handleRating} name="qrate"/></div>
-                        <div className='rating'>Workload   <StarRatings rating={this.state.wrating} starRatedColor="blue" changeRating={this.handleRating} name="wrate"/></div>
-                        <div className='rating'>Difficulty <StarRatings rating={this.state.drating} starRatedColor="blue" changeRating={this.handleRating} name="drate"/></div>
-                        <div className='rating'>Practicability <StarRatings rating={this.state.prating} starRatedColor="blue" changeRating={this.handleRating} name="prate"/></div>
-                        <textarea className="textBox" value={this.state.review} onChange={this.handleChange} /> <br />
+                        <div className='rating'>Teaching Quality <StarRatings rating={this.state.qrating} starRatedColor="blue" changeRating={this.handleRating} name="qrate" /></div>
+                        <div className='rating'>Workload   <StarRatings rating={this.state.wrating} starRatedColor="blue" changeRating={this.handleRating} name="wrate" /></div>
+                        <div className='rating'>Difficulty <StarRatings rating={this.state.drating} starRatedColor="blue" changeRating={this.handleRating} name="drate" /></div>
+                        <div className='rating'>Practicability <StarRatings rating={this.state.prating} starRatedColor="blue" changeRating={this.handleRating} name="prate" /></div>
+                        <textarea className="textBox" placeholder={this.state.review} onChange={this.handleChange} /> <br />
                         <input className="submitButton" type="submit" value="Submit" />
                     </form>
                 </div>

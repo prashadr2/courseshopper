@@ -19,10 +19,10 @@ export default class ReviewCard extends React.Component {
                     <div class="content" style={{width:"800px", textAlign:'left'}}>
                         <div class="author">{this.props.name}</div>
                         <div class="metadata">
-                            <div>2 days ago</div>
                             <div>
+                                
                                 <i aria-hidden="true" class="star icon">
-                                </i>{this.props.rating} stars
+                                </i>Overall: {this.props.rating} stars
                             </div>
                         </div>
                         <div class="text">{this.props.review}</div>
