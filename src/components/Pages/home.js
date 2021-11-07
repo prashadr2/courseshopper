@@ -8,18 +8,19 @@ const Home = () => {
       <img src={logo} alt="logo" className="Homepage-logo img-fluid" 
       height={270}
       width={287}
-      style={{ alignSelf: 'center' }}/>
+      style={{ alignSelf: 'center',marginTop:"20px" }}/>
 
     <div 
       style={{
         position: 'absolute', left: '20%', right: '20%', top: '60%'
     }}>
       <SearchBar />
-      Tags: 
     </div>
 
     <div
       style={{
+        marginTop: '20px',
+        padding: "20px",
         border: '3px solid #2f7051',
         borderRadius: '10px',
         display: 'flex', alignItems: 'center', justifyContent: 'center',

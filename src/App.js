@@ -21,6 +21,7 @@ import OrcaParse from './OrcaParse';
 import { connect } from 'react-redux'
 import { update } from './orcaSlice'
 
+
 class App extends React.Component {
   componentDidMount(){
     OrcaParse().then(retval=>{
