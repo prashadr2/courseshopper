@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { NavbarItems } from './NavbarItems'
 import './Navbar.css'
+import {
+  Link
+} from "react-router-dom";
 import { auth, logout } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
@@ -26,11 +29,11 @@ export default function Navbar() {
           {NavbarItems.map((item) => {
             if (item.title !== 'Login' && item.title !== 'Signup') {
               return (
-                <a className={item.className} href={item.url}>{item.title}</a>
+                <Link className={item.className} to={item.url}>{item.title}</Link>
               )
             } else {
               return (
-                !user && <a className={item.className} href={item.url}>{item.title}</a>
+                !user && <Link className={item.className} to={item.url}>{item.title}</Link>
               )
             }
           })}
@@ -51,7 +54,6 @@ export default function Navbar() {
         </div>
         <button className="button">Open</button>
       </div>
-
     </div>
   )
 }
