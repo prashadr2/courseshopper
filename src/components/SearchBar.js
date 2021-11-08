@@ -8,7 +8,8 @@ const SearchBar = () => {
     <form>
       <input
         className="searchBar"
-        type="text"
+        type="search"
+        name="searchbar"
         placeholder="Search your courses"
       />
       <button className="searchBtn" type="submit">
