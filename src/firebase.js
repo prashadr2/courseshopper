@@ -1,5 +1,15 @@
 // Import the functions you need from the SDKs you need
-import firebase from "firebase";
+// import firebase from "firebase";
+import { initializeApp } from "firebase/app";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+  signOut
+} from 'firebase/auth'
+import { getFirestore, collection } from "firebase/firestore";
+
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -14,54 +24,44 @@ const firebaseConfig = {
   appId: "1:902611348397:web:a9b8505b1274a4b32dcf24"
 };
 
-const app = firebase.initializeApp(firebaseConfig);
-const auth = app.auth();
-const db = app.firestore();
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
 
-const signInWithEmailAndPassword = async (email, password) => {
+const signIn = async (email, password) => {
   try {
-    await auth.signInWithEmailAndPassword(email, password);
+    await signInWithEmailAndPassword(auth, email, password);
   } catch (err) {
     console.error(err);
     alert(err.message);
   }
 };
-const signupWithEmailAndPassword = async (name, email, password) => {
+const signUp = async (name, email, password) => {
   try {
-    const res = await auth.createUserWithEmailAndPassword(email, password);
+    const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
-    console.log('this is log');
-    await db.collection("users").add({
-      uid: user.uid,
-      name,
-      authProvider: "local",
-      email,
-    });
   } catch (err) {
-    console.error(err);
     alert(err.message);
   }
 };
-const sendPasswordResetEmail = async (email) => {
+const resetPwd = async (email) => {
   try {
-    await auth.sendPasswordResetEmail(email);
+    await sendPasswordResetEmail(email);
     alert("Password reset link sent!");
   } catch (err) {
-    console.error(err);
     alert(err.message);
   }
 };
 
 const logout = () => {
-  console.log('logout');
-  auth.signOut();
+  signOut(auth);
 };
 export {
   auth,
   db,
-  signInWithEmailAndPassword,
-  signupWithEmailAndPassword,
-  sendPasswordResetEmail,
+  signIn,
+  signUp,
+  resetPwd,
   logout,
 };

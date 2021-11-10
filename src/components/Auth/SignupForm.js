@@ -4,7 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import "./SignupForm.css"
 // import { useAuth } from "./AuthContext"
 import {
-  auth, signupWithEmailAndPassword,
+  auth, signUp,
 } from '../../firebase';
 
 
@@ -20,9 +20,8 @@ function SignupForm() {
     if (!name) alert("Please enter name");
     if (/@rpi.edu\s*$/.test(email) === false) {
       alert("Please enter rpi email");
-    }
-    if (password !== passwordConfirmation) alert("Passwords don't match");
-    else signupWithEmailAndPassword(name, email, password);
+    }else if (password !== passwordConfirmation) alert("Passwords don't match");
+    else signUp(name, email, password);
   }
   console.log('this is auth', auth);
 
@@ -71,7 +70,7 @@ function SignupForm() {
         />
         <div style={{
           fontSize: "12px", marginTop: "0px",marginBottom: "10px"
-        }}>Use 8 or more characters with letters, numbers & symbols</div>
+        }}>Use 6 or more characters with letters, numbers & symbols</div>
 
         <button className="signupBtn" onClick={signup}>
           Sign Up

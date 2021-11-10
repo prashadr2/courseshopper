@@ -1,6 +1,6 @@
 .courseCard {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 800px;
+  max-width: 1000px;
   margin: auto;
   text-align: center;
   font-family: arial;
@@ -8,6 +8,7 @@
   border-width: 5px;
   border-radius: 10px;
   border-color: grey;
+  font-size: 16px;
 }
 
 .courseCard .title {
