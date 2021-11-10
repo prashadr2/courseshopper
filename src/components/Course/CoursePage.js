@@ -19,14 +19,14 @@ const CoursePage = (props) => {
 
   useEffect(() => {
     axios.get("https://course-shopper.herokuapp.com/ravg/" + props.location.state.coursePrefix + "/" + props.location.state.courseNumber)
-    .then((retval)=>{
-      setQ(retval.data.qrating);
-      setW(retval.data.wrating);
-      setP(retval.data.prating);
-      setD(retval.data.drating);
-      setO(retval.data.overall);
-    })
-    .catch((error) => {console.log(error);});
+      .then((retval) => {
+        setQ(retval.data.qrating);
+        setW(retval.data.wrating);
+        setP(retval.data.prating);
+        setD(retval.data.drating);
+        setO(retval.data.overall);
+      })
+      .catch((error) => { console.log(error); });
   });
 
 
@@ -88,9 +88,9 @@ const CoursePage = (props) => {
         <button className="rmvBtn" onClick={() => { alert("Removed " + props.location.state.courseTitle + " from Cart!"); dispatch(remove(cid)) }}>Remove from Cart</button>
       </div>
       <div className='courseInfo'>
-        Prequisites/Corequisites: {props.location.state.prereqs} <br />
+        {/* Prequisites/Corequisites: {props.location.state.prereqs} <br />
         When Offered: {props.location.state.termsoffered} <br/>
-        <br/>
+        <br/> */}
         <p> {props.location.state.description}</p>
       </div>
       <div class="row">
@@ -111,15 +111,18 @@ const CoursePage = (props) => {
             </div>
           </div>
           <div className="overall_rating">
-            overall rating
-            <div>{overall}/5</div>
+           overall rating 
+            <div style={{marginTop: "10px"}}>
+              {overall}/5 <br/>
+              <StarRatings starDimension="36px" rating={overall} starRatedColor="orange"/>
+            </div>
           </div>
         </div>
         <div class="rightcolumn">
-          <div className='rating'>Teaching Quality <StarRatings starRatedColor="green" rating={qrating} name="qrate"/></div>
-          <div className='rating'>Workload   <StarRatings starRatedColor="green" rating={wrating} name="wrate"/></div>
-          <div className='rating'>Difficulty <StarRatings starRatedColor="green" rating={drating} name="drate"/></div>
-          <div className='rating'>Practicability <StarRatings starRatedColor="green" rating={prating}  name="prate"/></div>
+          <div className='rating'>Teaching Quality <StarRatings starRatedColor="green" rating={qrating} name="qrate" /></div>
+          <div className='rating'>Workload   <StarRatings starRatedColor="green" rating={wrating} name="wrate" /></div>
+          <div className='rating'>Difficulty <StarRatings starRatedColor="green" rating={drating} name="drate" /></div>
+          <div className='rating'>Practicability <StarRatings starRatedColor="green" rating={prating} name="prate" /></div>
         </div>
       </div>
       <Reviews courseTitle={props.location.state.courseTitle} coursePrefix={props.location.state.coursePrefix} courseNumber={props.location.state.courseNumber} />

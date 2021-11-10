@@ -5,6 +5,8 @@ import {
   Link
 } from "react-router-dom";
 import axios from 'axios';
+import StarRatings from 'react-star-ratings';
+
 
 
 
@@ -59,7 +61,8 @@ export default class CourseCard extends React.Component {
             </Link>
           </div>
           <div style={{ float: "right", paddingRight: "20px" }}>
-            Rating: {this.state.overallrating}/5 
+              {/* {this.state.overallrating}/5  &nbsp; */}
+              <StarRatings starSpacing="3px" starDimension="25px" starRatedColor="orange" rating={this.state.overallrating} />
           </div>
         </div>
         <div style={{ margin: "10px" }}>
