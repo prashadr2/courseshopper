@@ -7,16 +7,17 @@ import "./LoginForm.css";
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const history = useHistory();
 
   useEffect(() => {
+    // if it's loading trigger a loading screen
+    // go back to home page after login successfully
     if (loading) {
-      // maybe trigger a loading screen
       return;
     }
     if (user) history.replace("/");
-  }, [user, loading]);
+  }, [user, loading, history]);
 
   return (
     <div className="login">

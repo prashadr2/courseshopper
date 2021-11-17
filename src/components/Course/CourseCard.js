@@ -8,8 +8,7 @@ import axios from 'axios';
 import StarRatings from 'react-star-ratings';
 
 
-
-
+// display the course info (course name, course description, course overall rating)
 export default class CourseCard extends React.Component {
   constructor(props) {
     super(props);
@@ -17,13 +16,14 @@ export default class CourseCard extends React.Component {
       courseTitle: this.props.courseTitle,
       courseNumber: this.props.courseNumber,
       coursePrefix: this.props.coursePrefix,
-      courseTags: this.props.courseTags, //change this later to recieve a prop with database tag info
+      //change this later to recieve a prop with database tag info
+      courseTags: this.props.courseTags, 
       courseDesc: "",
       overallrating: 0.0,
     }
   }
 
-
+  // fetch course data from database 
   componentDidMount() {
     axios.get("https://course-shopper.herokuapp.com/course/" + this.state.coursePrefix + "/" + this.state.courseNumber)
       .then((retval) => {
@@ -61,8 +61,12 @@ export default class CourseCard extends React.Component {
             </Link>
           </div>
           <div style={{ float: "right", paddingRight: "20px" }}>
-              {/* {this.state.overallrating}/5  &nbsp; */}
-              <StarRatings starSpacing="3px" starDimension="25px" starRatedColor="orange" rating={this.state.overallrating} />
+            <StarRatings
+              starSpacing="3px"
+              starDimension="25px"
+              starRatedColor="orange"
+              rating={this.state.overallrating}
+            />
           </div>
         </div>
         <div style={{ margin: "10px" }}>

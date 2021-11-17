@@ -8,7 +8,7 @@ import {
   sendPasswordResetEmail,
   signOut
 } from 'firebase/auth'
-import { getFirestore, collection } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -39,8 +39,7 @@ const signIn = async (email, password) => {
 };
 const signUp = async (name, email, password) => {
   try {
-    const res = await createUserWithEmailAndPassword(auth, email, password);
-    const user = res.user;
+    await createUserWithEmailAndPassword(auth, email, password);
   } catch (err) {
     alert(err.message);
   }

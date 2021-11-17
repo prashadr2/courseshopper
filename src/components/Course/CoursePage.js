@@ -4,10 +4,10 @@ import { useDispatch } from 'react-redux'
 import { add, remove } from '../../courseSlice'
 import Reviews from './Reviews'
 import Dropzone from 'react-dropzone'
-import { ninvoke } from 'q';
 import './CoursePage.css';
 import StarRatings from 'react-star-ratings';
 
+// main course page
 const CoursePage = (props) => {
   //required props: courseprefix, coursetitle, coursenumber
   const [upload, setUpload] = useState(false);
@@ -17,6 +17,7 @@ const CoursePage = (props) => {
   const [drating, setD] = useState(0.0);
   const [overall, setO] = useState(0.0);
 
+  //fetching rating data from database
   useEffect(() => {
     axios.get("https://course-shopper.herokuapp.com/ravg/" + props.location.state.coursePrefix + "/" + props.location.state.courseNumber)
       .then((retval) => {
@@ -29,24 +30,20 @@ const CoursePage = (props) => {
       .catch((error) => { console.log(error); });
   });
 
-
+  // upload the syllabus to the database
   const handleDrop = file => {
-    console.log(file);
     const formData = new FormData();
     formData.append('pdf', file[0]);
     formData.append('prefix', props.location.state.coursePrefix);
     formData.append('number', props.location.state.courseNumber);
-    for (var key of formData.entries()) {
-      console.log(key[0] + ', ' + key[1]);
-    }
     axios.post("https://course-shopper.herokuapp.com/syllabus", formData)
       .then((response) => {
-        console.log(response);
         setUpload(true);
       })
       .catch(error => { console.log(error); })
   }
 
+  // help function to download the syllabus from the database
   const getpdf = (e) => {
     e.preventDefault();
     var xhr = new XMLHttpRequest();
@@ -58,15 +55,6 @@ const CoursePage = (props) => {
       window.open(fileurl);
     }
     xhr.send();
-    // axios.get("https://course-shopper.herokuapp.com/syllabus/" + props.location.state.coursePrefix + '/' + props.location.state.courseNumber)
-    // .then(retval=>{
-    //   console.log(retval);
-    //   const blob = new Blob([retval.data], {responseType: 'arraybuffer', type: 'application/pdf'});
-    //   const fileDownloadUrl = URL.createObjectURL(blob);
-    //   window.open(fileDownloadUrl);
-    // }).catch(error=>{
-    //   console.log(error);
-    // });
   }
 
   const dispatch = useDispatch();
@@ -88,9 +76,6 @@ const CoursePage = (props) => {
         <button className="rmvBtn" onClick={() => { alert("Removed " + props.location.state.courseTitle + " from Cart!"); dispatch(remove(cid)) }}>Remove from Cart</button>
       </div>
       <div className='courseInfo'>
-        {/* Prequisites/Corequisites: {props.location.state.prereqs} <br />
-        When Offered: {props.location.state.termsoffered} <br/>
-        <br/> */}
         <p> {props.location.state.description}</p>
       </div>
       <div class="row">
@@ -111,10 +96,10 @@ const CoursePage = (props) => {
             </div>
           </div>
           <div className="overall_rating">
-           overall rating 
-            <div style={{marginTop: "10px"}}>
-              {overall}/5 <br/>
-              <StarRatings starDimension="36px" rating={overall} starRatedColor="orange"/>
+            overall rating
+            <div style={{ marginTop: "10px" }}>
+              {overall}/5 <br />
+              <StarRatings starDimension="36px" rating={overall} starRatedColor="orange" />
             </div>
           </div>
         </div>

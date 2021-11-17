@@ -8,7 +8,7 @@ import {
   Route
 } from "react-router-dom";
 
-import Home from './components/Pages/home';
+import Home from './components/Pages/Home';
 import Login from './components/Pages/Login';
 import Signup from './components/Pages/Signup'
 import SearchResult from './components/SearchResult/SearchResult';

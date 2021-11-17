@@ -1,26 +1,23 @@
 import React from 'react'
+import logo from '../../images/BookLogo.png'
 import './ReviewCard.css'
-import { Button, Comment, Form, Header } from 'semantic-ui-react'
 
-
+// review section in course page
 export default class ReviewCard extends React.Component {
-    constructor(props) {
-        super(props);
-        //props are: review, name, rating
-    }
-
     render() {
         return (
-            <div class="ui comments" style={{width: "100%", alignItems: "center", justifyContent: "center",}}>
-                <div class="comment" style={{fontSize:"18px", padding:"20px"}}>
-                    <a class="avatar" style={{marginLeft: "20px", marginRight: "50px"}}>
-                        <img src="https://react.semantic-ui.com/images/avatar/small/stevie.jpg" />
+            <div class="ui comments" style={{ width: "100%", alignItems: "center", justifyContent: "center", }}>
+                <div class="comment" style={{ fontSize: "18px", padding: "20px" }}>
+                    <a class="avatar"
+                        href="/#"
+                        style={{ marginLeft: "20px", marginRight: "50px" }}>
+                        <img src={logo} alt="user profile" />
                     </a>
-                    <div class="content" style={{width:"800px", textAlign:'left'}}>
+                    <div class="content" style={{ width: "800px", textAlign: 'left' }}>
                         <div class="author">{this.props.name}</div>
                         <div class="metadata">
                             <div>
-                                
+
                                 <i aria-hidden="true" class="star icon">
                                 </i>Overall: {this.props.rating} stars
                             </div>

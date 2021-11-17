@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./SignupForm.css"
-// import { useAuth } from "./AuthContext"
 import {
   auth, signUp,
 } from '../../firebase';
@@ -13,23 +12,28 @@ function SignupForm() {
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [name, setName] = useState("");
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const history = useHistory();
 
+  // checking sign up information
   const signup = () => {
-    if (!name) alert("Please enter name");
-    if (/@rpi.edu\s*$/.test(email) === false) {
+    if (!name) {
+      alert("Please enter name");
+    } else if (/@rpi.edu\s*$/.test(email) === false) {
       alert("Please enter rpi email");
-    }else if (password !== passwordConfirmation) alert("Passwords don't match");
-    else signUp(name, email, password);
+    } else if (password !== passwordConfirmation) {
+      alert("Passwords don't match");
+    } else {
+      signUp(name, email, password);
+    }
   }
-  console.log('this is auth', auth);
 
   useEffect(() => {
-    console.log('user in the signup', user);
+    // if it's loading trigger a loading screen
+    // go back to home page after signup successfully
     if (loading) return;
     if (user) history.replace("/");
-  }, [user, loading]);
+  }, [user, loading, history]);
 
   return (
     <div className="signup">
@@ -51,7 +55,6 @@ function SignupForm() {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="rcsid@rpi.edu"
         />
-
         <div className="signupText" >Password</div>
         <input
           type="password"
@@ -69,13 +72,12 @@ function SignupForm() {
           placeholder="Password"
         />
         <div style={{
-          fontSize: "12px", marginTop: "0px",marginBottom: "10px"
+          fontSize: "12px", marginTop: "0px", marginBottom: "10px"
         }}>Use 6 or more characters with letters, numbers & symbols</div>
 
         <button className="signupBtn" onClick={signup}>
           Sign Up
         </button>
-
         <div>
           Already have an account? <Link to="/login">Login</Link> now.
         </div>

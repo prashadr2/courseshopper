@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+// Process the data obtained from the API
 export const orcaSlice = createSlice({
   name: 'allcourses',
   initialState: { 
@@ -7,7 +8,6 @@ export const orcaSlice = createSlice({
   },
   reducers: {
     update: (state, action) => {
-        console.log("inslicer", action.payload);
         state.allcourses = [...action.payload];
     },
   },

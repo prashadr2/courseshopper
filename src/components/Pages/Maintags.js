@@ -17,23 +17,9 @@ export default class Maintags extends React.Component {
 
     render() {
         return (
-            // <div>
-            // <div>
-            //     SCIENCE
-            //     <div>
-            //         {this.state.science.map(prefix => <MaintagDisplay name={prefix} />)}
-            //     </div>
-            // </div>
-            //     {this.state.science.map(prefix => <MaintagDisplay name={prefix} />)} -----
-            //     {this.state.hass.map(prefix => <MaintagDisplay name={prefix} />)} -----
-            //     {this.state.eng.map(prefix => <MaintagDisplay name={prefix} />)} -----
-            //     {this.state.other.map(prefix => <MaintagDisplay name={prefix} />)} -----
-            //     {this.state.arche.map(prefix => <MaintagDisplay name={prefix} />)} -----
-            //     {this.state.manage.map(prefix => <MaintagDisplay name={prefix} />)} -----
-            // </div>
-            <div class="row">
-                <div class="column">
-                    <div class="card">
+            <div className="row">
+                <div className="column">
+                    <div className="card">
                         <div>
                             <div className="departmentTitle">SCIENCE</div>
                             <div>
@@ -42,8 +28,8 @@ export default class Maintags extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div class="column">
-                    <div class="card">
+                <div className="column">
+                    <div className="card">
                         <div>
                             <div className="departmentTitle">HASS</div>
                             <div>
@@ -52,8 +38,8 @@ export default class Maintags extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div class="column">
-                    <div class="card">
+                <div className="column">
+                    <div className="card">
                         <div>
                             <div className="departmentTitle">Engineer</div>
                             <div>
@@ -68,8 +54,8 @@ export default class Maintags extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div class="column">
-                    <div class="card">
+                <div className="column">
+                    <div className="card">
                         <div>
                             <div className="departmentTitle">Arche</div>
                             <div>

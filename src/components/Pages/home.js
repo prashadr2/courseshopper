@@ -1,5 +1,5 @@
 import React from 'react'
-import SearchBar from '../SearchBar'
+import SearchBar from '../SearchResult/SearchBar'
 import logo from '../../images/CourseShopperLogo.png'
 
 const Home = () => {

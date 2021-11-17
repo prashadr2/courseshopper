@@ -1,24 +1,14 @@
-import OrcaParse from '../../OrcaParse'
 import React from 'react';
 import CourseCard from './CourseCard';
-import { useSelector, useDispatch, connect } from 'react-redux'
+import { connect } from 'react-redux'
 
-
-
-class CourseList extends React.Component { //THIS CLASS IS OUTDATED, LOOK AT COURSECART!!!
+// display a list of course cards
+class CourseList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       courses: props.allcourses
     }
-  }
-
-  componentDidMount() {
-    // OrcaParse().then(retval => {
-    //   console.log(retval)
-    //   this.setState({ courses: retval });
-    // });
-    // console.log(this.state.courses);
   }
 
   render() {
@@ -43,6 +33,5 @@ const mapStateToProps = (state) => {
     allcourses: state.allcourses.allcourses
   }
 }
-
 
 export default connect(mapStateToProps,null)(CourseList);

@@ -3,7 +3,6 @@ import ReviewCard from './ReviewCard'
 import axios from 'axios';
 import Loader from "react-loader-spinner";
 import "./Reviews.css"
-import { Button, Comment, Form, Header } from 'semantic-ui-react'
 import StarRatings from 'react-star-ratings'
 
 
@@ -34,7 +33,8 @@ export default class Reviews extends React.Component {
         axios.get("https://course-shopper.herokuapp.com/review/" + this.state.coursePrefix + "/" + this.state.courseNumber)
             .then(response => {
                 this.setState({
-                    reviews: [...response.data.reviews] //has fields named [text,reviewer,rating]
+                    //has fields named [text,reviewer,rating]
+                    reviews: [...response.data.reviews] 
                 });
             })
             .catch(error => { console.log(error); });
