@@ -1,3 +1,13 @@
+# Instruction
+1. `npm install`
+
+
+to store all dependencies in the package
+
+2. `npm start`
+
+
+
 ## Title: Added courseCard, courseList and search page components
 
 Contributer: Jiarui Ruan
