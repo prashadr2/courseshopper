@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// helper function that parse the course data from API
 async function OrcaParse() {
     let clink = "https://rcos-orca.herokuapp.com/202109/courses?include_sections=true&include_periods=false&limit=50&offset=";
     let offset = 0;

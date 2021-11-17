@@ -1,5 +1,5 @@
-// Import the functions you need from the SDKs you need
-// import firebase from "firebase";
+//Firebase.js has website firebase configuration and auth helper function
+
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -11,10 +11,7 @@ import {
 import { getFirestore } from "firebase/firestore";
 
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
+//  web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAmzH5TFG93mrZZ_szNZwindfwwdXfnPIY",
   authDomain: "courseshopper-c6b44.firebaseapp.com",
