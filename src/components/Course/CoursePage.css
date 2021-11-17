@@ -1,0 +1,106 @@
+.coursepage {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 18px;
+}
+.coursepage .courseInfo {
+  border-radius: 5px;
+  border-style: solid;
+  border-color: green;
+  border-width: 2px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 10px;
+  text-align: left;
+  padding-left: 25px;
+  font-size: 18px;
+}
+
+.courseTitle {
+  font-size: 48px;
+  padding: 40px;
+}
+
+.addBtn {
+  background-color: rgb(0, 132, 255);
+  border-radius: 5px;
+  border:none;
+  margin-right: 5px;
+  color:white;
+  font-size: 15px;
+  padding: 8px;
+}
+
+.rmvBtn {
+  background-color: white;
+  border-radius: 5px;
+  margin-right: 5px;
+  color:black;
+  font-size: 15px;
+  padding: 8px;
+}
+
+.row {
+  display: flex;
+  padding-top: 10px;
+}
+
+.leftcolumn {
+  width: 25%;
+  float: left;
+  border-width: 2px;
+}
+
+.rightcolumn {
+  width: 70%;
+  float: left;
+  border: solid;
+  border-color: green;
+  border-width: 2px;
+  margin-left: 50px;
+  margin-right: 20px;
+  text-align: left;
+}
+
+.rating {
+  margin-left: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-right: 20px;
+  font-size: 18px;
+}
+
+.syllabus {
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.syllabussection {
+  border-style: groove;
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  padding: 10px;
+  align-items: center;
+}
+
+.overall_rating {
+  border: solid;
+  border-radius: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  height: auto;
+  width: 300px;
+  margin: auto;
+  font-size: 24px;
+}
+
+.download {
+  border-style: groove;
+  margin-right: 20px;
+  margin-left: 20px;
+  height: 50%;
+  padding: 20px;
+  font-size: 15px;
+  align-items: center;
+}

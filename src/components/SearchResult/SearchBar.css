@@ -1,0 +1,21 @@
+.searchBar {
+  border-color: green;
+  border-width: 3px;
+  border-radius: 5px;
+  width: 50%;
+  height: 50px;
+  margin-top: -20px;
+  font-size: 20px;
+}
+
+.searchBtn {
+  background-color: green;
+  margin-left: 10px;
+  padding: 10px;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  height: auto;
+  border-radius: 5px;
+}

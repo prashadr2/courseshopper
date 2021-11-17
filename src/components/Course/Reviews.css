@@ -1,0 +1,39 @@
+.reviews {
+  margin-top: 30px;
+  background-color: whitesmoke;
+  border: black;
+}
+
+.reviewTitle {
+  margin-left: 20px;
+  text-align: left;
+  font-size: 36px;
+  padding: 20px;
+}
+
+.reviewForm{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.textBox {
+  margin-top: 20px;
+  border-color: rgb(112, 157, 241);
+  border-width: 5px;
+  height: 300px;
+  width: 800px;
+  margin-right: 50px;
+  margin-left: 50px;
+  padding: 20px;
+}
+
+.submitButton {
+  background-color: rgb(0, 110, 255);
+  border-radius: 5px;
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  height: 35px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+}

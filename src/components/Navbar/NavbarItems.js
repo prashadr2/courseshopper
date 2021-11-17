@@ -1,11 +1,11 @@
 export const NavbarItems = [
   {
     title: 'Departments',
-    url: '#',
+    url: 'maintags',
     className: ''
   },
   {
-    title: 'Degree Work',
+    title: 'DegreeWorks',
     url: '#',
     className: ''
   },
@@ -18,6 +18,11 @@ export const NavbarItems = [
     title: 'Signup',
     url: 'signup',
     className: ''
+  },
+  {
+    title: "Cart",
+    url: "cart",
+    className:''
   },
 ]
 

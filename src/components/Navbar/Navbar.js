@@ -1,33 +1,55 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { NavbarItems } from './NavbarItems'
 import './Navbar.css'
+import {
+  Link
+} from "react-router-dom";
+import { auth, logout } from "../../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+
+
 
 export default function Navbar() {
-  console.log(NavbarItems);
 
-  const [clicked, setClicked] = useState(false);
-  const [showItems, setShowItems] = useState(false);
+  const [user] = useAuthState(auth);
 
   return (
     <div className="Navbar">
       <div className="leftSide">
         <a href="/" className="NavbarLogo">CourseShopper</a>
         <div className="NavbarIcon"></div>
-        {/* <input type="text" placeholder="Search..." />
-        <button>Search</button> */}
       </div>
 
       <div className="rightSide">
-        <div className="menuLinks" id={showItems ? "hidden" :""}>
+        <div className="menuLinks">
           {NavbarItems.map((item) => {
-            return (
-              <a className={item.className} href={item.url}>{item.title}</a>
-            )
+            if (item.title !== 'Login' && item.title !== 'Signup') {
+              return (
+                <Link className={item.className} key={item.title} to={item.url}>{item.title}</Link>
+              )
+            } else {
+              return (
+                !user && <Link className={item.className} key={item.title} to={item.url}>{item.title}</Link>
+              )
+            }
           })}
+          {user &&
+            <button style={{
+              background: "white",
+              border: "none",
+              borderRadius: "5px",
+              marginLeft: "25px",
+              fontSize: "18px",
+              color: "green",
+              padding: "5px"
+            }}
+              onClick={logout}
+            >
+              Log Out
+            </button>}
         </div>
         <button className="button">Open</button>
       </div>
-
     </div>
   )
 }

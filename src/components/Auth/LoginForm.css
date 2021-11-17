@@ -1,0 +1,38 @@
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: rgba(139, 204, 161, 0.829);
+  padding: 30px;
+  width: 500px;
+  border-radius: 30px;
+}
+
+.loginText{
+  text-align: left;
+}
+
+.loginTextBox {
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.loginBtn {
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  border: none;
+  color: white;
+  background-color: black;
+}
+
+.login div {
+  margin-top: 7px;
+}

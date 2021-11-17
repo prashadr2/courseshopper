@@ -1,5 +1,5 @@
 .Navbar{
-  background-color:#9370db;
+  background-color:#2f7051;
   height: 80px;
   display: flex;
   justify-content: center;
@@ -73,6 +73,8 @@ button:hover{
 .Navbar .rightSide .button {
   display: none;
   margin-left: 20px;
+  padding: 20px;
+  height: 30px;
 }
 
 @media only screen and (max-width: 800px) {
