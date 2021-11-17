@@ -16,7 +16,6 @@ export default class CourseCard extends React.Component {
       courseTitle: this.props.courseTitle,
       courseNumber: this.props.courseNumber,
       coursePrefix: this.props.coursePrefix,
-      //change this later to recieve a prop with database tag info
       courseTags: this.props.courseTags, 
       courseDesc: "",
       overallrating: 0.0,
@@ -42,7 +41,7 @@ export default class CourseCard extends React.Component {
       .catch((error) => { console.log(error); });
   }
 
-
+  //on click of coursecard, forward user to the coursepage component with props from this component state
   render() {
     return (
       <div className="courseCard" style={{ marginTop: "10px" }}>

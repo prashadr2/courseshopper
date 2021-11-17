@@ -5,6 +5,8 @@ import Loader from "react-loader-spinner";
 
 
 const MaintagFilterList = (props) => {
+    //grab courses from redux store via selector
+    //map over all courses and filter down by maintagdisplay prop link
     const all = useSelector((state) => state.allcourses.allcourses);
     return (all.length === 0 ? (<Loader
         type="TailSpin"

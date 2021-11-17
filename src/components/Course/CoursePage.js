@@ -8,6 +8,8 @@ import './CoursePage.css';
 import StarRatings from 'react-star-ratings';
 
 // main course page
+// holds dynamic ratings from database as well as local user ratings in the state
+// interacts with database to send/recieve syllabus as well as send/recieve reviews
 const CoursePage = (props) => {
   //required props: courseprefix, coursetitle, coursenumber
   const [upload, setUpload] = useState(false);

@@ -3,6 +3,7 @@ import CourseCard from './CourseCard';
 import { connect } from 'react-redux'
 
 // display a list of course cards
+//iterate over all courses from redux store and list them out as coursecards
 class CourseList extends React.Component {
   constructor(props) {
     super(props);

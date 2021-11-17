@@ -3,6 +3,7 @@ import logo from '../../images/BookLogo.png'
 import './ReviewCard.css'
 
 // review section in course page
+// holds the information from the database passed through props
 export default class ReviewCard extends React.Component {
     render() {
         return (
