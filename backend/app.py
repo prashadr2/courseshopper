@@ -4,7 +4,9 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_restful import Api, Resource, reqparse
 from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv
 
+load_dotenv()
 
 
 app = Flask(__name__)
@@ -20,10 +22,20 @@ db = SQLAlchemy(app)
 
 migrate = Migrate(app, db)
 
-from CourseApiHandler import SyllabusApiHandler
+from seed_db import seed
+
+app.cli.add_command(seed)
+
+
+from SyllabusApiHandler import SyllabusApiHandler
 from ReviewApiHandler import ReviewApiHandler
+from CourseApiHandler import CourseApiHandler
+from RatingAvgApiHandler import RatingAvgApiHandler
 
 api.add_resource(SyllabusApiHandler, '/syllabus', "/syllabus/<string:prefix>/<string:number>")
 api.add_resource(ReviewApiHandler, '/review/<string:prefix>/<string:number>', '/review')
+api.add_resource(CourseApiHandler, '/course/<string:prefix>/<string:number>')
+api.add_resource(RatingAvgApiHandler, '/ravg/<string:prefix>/<string:number>')
+
 
 
