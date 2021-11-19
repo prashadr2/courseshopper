@@ -4,6 +4,8 @@ import CourseCard from './CourseCard';
 import Loader from "react-loader-spinner";
 
 // display all course cards that store in user's course cart
+// grab redux store data
+// map over all courses and only display cards for courses that are added to the cart in the redux store => clist
 const CourseCart = () => {
   const all = useSelector((state) => state.allcourses.allcourses);
   const clist = useSelector((state) => state.courses.courses);

@@ -5,7 +5,8 @@ import Loader from "react-loader-spinner";
 import "./Reviews.css"
 import StarRatings from 'react-star-ratings'
 
-
+// displays the custom star ratings for a user as well as a text box for users to submit ratings
+// interacts with database to send and get reviews for display
 export default class Reviews extends React.Component {
     constructor(props) {
         super(props);

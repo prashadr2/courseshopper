@@ -16,7 +16,7 @@ export default function Navbar() {
   return (
     <div className="Navbar">
       <div className="leftSide">
-        <a href="/" className="NavbarLogo">CourseShopper</a>
+        <Link to="/" className="NavbarLogo">CourseShopper</Link>
         <div className="NavbarIcon"></div>
       </div>
 
