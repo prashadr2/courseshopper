@@ -9,7 +9,7 @@ export default class Maintags extends React.Component {
             science: ["ASTR", "BCBP", "BIOL", "CHEM", "CSCI", "ERTH", "IENV", "ISCI", "ITWS", "MATH", "MATP", "PHYS"],
             hass: ["ARTS", "COGS", "COMM", "ECON", "GSAS", "IHSS", "LANG", "LITR", "PHIL", "PSYC", "WRIT"],
             eng: ["BMED", "CHME", "CIVL", "ECSE", "ENGR", "ENVE", "ISYE", "MANE", "MTLE"],
-            other: ["ADMN", "STSO", "USAF", "USAR", "USAR", "USNA"],
+            other: ["ADMN", "STSO", "USAF", "USAR", "USNA"],
             arche: ["ARCH", "LGHT"],
             manage: ["MGMT"]
         }
@@ -23,7 +23,7 @@ export default class Maintags extends React.Component {
                         <div>
                             <div className="departmentTitle">SCIENCE</div>
                             <div>
-                                {this.state.science.map(prefix => <MaintagDisplay name={prefix} />)}
+                                {this.state.science.map(prefix => <MaintagDisplay key={prefix} name={prefix} />)}
                             </div>
                         </div>
                     </div>
@@ -33,7 +33,7 @@ export default class Maintags extends React.Component {
                         <div>
                             <div className="departmentTitle">HASS</div>
                             <div>
-                                {this.state.hass.map(prefix => <MaintagDisplay name={prefix} />)}
+                                {this.state.hass.map(prefix => <MaintagDisplay key={prefix} name={prefix} />)}
                             </div>
                         </div>
                     </div>
@@ -43,13 +43,13 @@ export default class Maintags extends React.Component {
                         <div>
                             <div className="departmentTitle">Engineer</div>
                             <div>
-                                {this.state.eng.map(prefix => <MaintagDisplay name={prefix} />)}
+                                {this.state.eng.map(prefix => <MaintagDisplay key={prefix} name={prefix} />)}
                             </div>
                         </div>
                         <div>
                             <div className="departmentTitle">Management</div>
                             <div>
-                                {this.state.manage.map(prefix => <MaintagDisplay name={prefix} />)}
+                                {this.state.manage.map(prefix => <MaintagDisplay key={prefix} name={prefix} />)}
                             </div>
                         </div>
                     </div>
@@ -59,13 +59,13 @@ export default class Maintags extends React.Component {
                         <div>
                             <div className="departmentTitle">Arche</div>
                             <div>
-                                {this.state.arche.map(prefix => <MaintagDisplay name={prefix} />)}
+                                {this.state.arche.map(prefix => <MaintagDisplay key={prefix} name={prefix} />)}
                             </div>
                         </div>
                         <div>
                         <div className="departmentTitle">Other</div>
                             <div>
-                                {this.state.other.map(prefix => <MaintagDisplay name={prefix} />)}
+                                {this.state.other.map(prefix => <MaintagDisplay key={prefix} name={prefix} />)}
                             </div>
                         </div>
                     </div>
