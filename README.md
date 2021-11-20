@@ -1,7 +1,7 @@
 # Instruction
 ### `npm install`
 
-Store all dependencies in the package.json
+Installs all dependencies in the package.json
 
 ### `npm start`
 
