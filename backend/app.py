@@ -22,15 +22,15 @@ db = SQLAlchemy(app)
 
 migrate = Migrate(app, db)
 
-from seed_db import seed
+from db.seed_db import seed
 
 app.cli.add_command(seed)
 
 
-from SyllabusApiHandler import SyllabusApiHandler
-from ReviewApiHandler import ReviewApiHandler
-from CourseApiHandler import CourseApiHandler
-from RatingAvgApiHandler import RatingAvgApiHandler
+from api.SyllabusApiHandler import SyllabusApiHandler
+from api.ReviewApiHandler import ReviewApiHandler
+from api.CourseApiHandler import CourseApiHandler
+from api.RatingAvgApiHandler import RatingAvgApiHandler
 
 api.add_resource(SyllabusApiHandler, '/syllabus', "/syllabus/<string:prefix>/<string:number>")
 api.add_resource(ReviewApiHandler, '/review/<string:prefix>/<string:number>', '/review')

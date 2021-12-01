@@ -1,6 +1,6 @@
 from flask_restful import Api, Resource, reqparse
 from app import db
-from models import Syllabus, Course, Review
+from db.models import Syllabus, Course, Review
 from sqlalchemy import exc
 
 class ReviewApiHandler(Resource):
@@ -8,7 +8,9 @@ class ReviewApiHandler(Resource):
     def get(self, prefix, number):
         course = Course.query.filter_by(prefix=prefix, number=number).first()
         if course is None:
-            raise Exception("No course exists with that name")
+            course = Course(prefix=prefix, number=number)
+            db.session.add(course)
+            db.session.commit()
 
         reviews = Review.query.filter_by(course_id=course.id).all()
 

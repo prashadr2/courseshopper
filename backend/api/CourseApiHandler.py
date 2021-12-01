@@ -1,6 +1,6 @@
 from flask_restful import Api, Resource, reqparse
 from app import db
-from models import Syllabus, Course, Review
+from db.models import Syllabus, Course, Review
 from sqlalchemy import exc
 
 class CourseApiHandler(Resource):
