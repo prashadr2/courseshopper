@@ -1,6 +1,6 @@
 from flask_restful import Api, Resource, reqparse
 from app import db
-from models import Syllabus, Course, Review
+from db.models import Syllabus, Course, Review
 from sqlalchemy import exc
 
 class RatingAvgApiHandler(Resource):
@@ -8,7 +8,9 @@ class RatingAvgApiHandler(Resource):
     def get(self, prefix, number):
         course = Course.query.filter_by(prefix=prefix, number=number).first()
         if course is None:
-            raise Exception("No course exists with that name")
+            course = Course(prefix=prefix, number=number)
+            db.session.add(course)
+            db.session.commit()
 
         reviews = Review.query.filter_by(course_id=course.id).all()
 
@@ -16,16 +18,18 @@ class RatingAvgApiHandler(Resource):
         workload = []
         difficulty = []
         practicability = []
-        for review in reviews:
-            teaching.append(review.teacher_rating)
-            workload.append(review.workload_rating)
-            difficulty.append(review.difficulty_rating)
-            practicability.append(review.practicability_rating)
+        qrating, wrating, drating, prating = (0, 0, 0, 0)
+        if len(reviews) > 0:
+            for review in reviews:
+                teaching.append(review.teacher_rating)
+                workload.append(review.workload_rating)
+                difficulty.append(review.difficulty_rating)
+                practicability.append(review.practicability_rating)
 
-        qrating = sum(teaching)/len(teaching)
-        wrating = sum(workload)/len(workload)
-        drating = sum(difficulty)/len(difficulty)
-        prating = sum(practicability)/len(practicability)
+            qrating = sum(teaching)/len(teaching)
+            wrating = sum(workload)/len(workload)
+            drating = sum(difficulty)/len(difficulty)
+            prating = sum(practicability)/len(practicability)
 
         return {
             'qrating': round(qrating,2),

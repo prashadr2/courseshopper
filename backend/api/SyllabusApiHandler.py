@@ -1,7 +1,7 @@
 from flask_restful import Api, Resource, reqparse, inputs
 from flask import send_file
 from app import db
-from models import Syllabus, Course
+from db.models import Syllabus, Course
 from sqlalchemy import exc, func
 import werkzeug
 import io
