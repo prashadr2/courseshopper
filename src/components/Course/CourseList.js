@@ -9,15 +9,15 @@ class CourseList extends React.Component {
     super(props);
     this.state = {
       courses: this.props.allcourses,
-      searchprefix: props.location.state.SearchPrefix
+      searchParams: props.location.state.searchParams
     }
   }
 
   render() {
     let carray = [];
-    console.log(this.state.searchprefix);
+    console.log(this.state.searchParams);
     this.state.courses.map(course => {
-      if(course.subject_prefix === this.state.searchprefix){
+      if(course.subject_prefix === this.state.searchParams || (course.number === this.state.searchParams || course.title=== this.state.searchParams)){
         carray.push(
           <CourseCard
           coursePrefix={course.subject_prefix}

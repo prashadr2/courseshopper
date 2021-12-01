@@ -21,7 +21,7 @@ const SearchBar = (props) => {
           to={{
             pathname: '/courselist',
             state: {
-              SearchPrefix: userinput.toUpperCase()
+              searchParams: userinput.toUpperCase()
             }
           }}>
           Search
