@@ -11,7 +11,6 @@ import {
 import Home from './components/Pages/Home';
 import Login from './components/Pages/Login';
 import Signup from './components/Pages/Signup'
-import SearchResult from './components/SearchResult/SearchResult';
 import CoursePage from './components/Course/CoursePage'
 import CourseCart from './components/Course/CourseCart'
 import Maintags from './components/Pages/Maintags'
@@ -46,7 +45,6 @@ class App extends React.Component {
             <Route path="/" exact component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Route path="/searchresult" component={SearchResult} />
             <Route path="/coursepage" component={CoursePage} />
             <Route path='/cart' component={CourseCart} />
             <Route path='/maintags' component={Maintags} />
