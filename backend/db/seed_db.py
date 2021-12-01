@@ -3,7 +3,7 @@ import json
 from flask.cli import with_appcontext
 from sqlalchemy import exc
 from app import db
-from models import Syllabus, Review, Tag, Course, tags
+from db.models import Syllabus, Review, Tag, Course, tags
 
 
 #seeds database with course information from courses.json
