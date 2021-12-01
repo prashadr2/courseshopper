@@ -26,7 +26,7 @@ export default class CourseCard extends React.Component {
   componentDidMount() {
     axios.get("https://course-shopper.herokuapp.com/course/" + this.state.coursePrefix + "/" + this.state.courseNumber)
       .then((retval) => {
-        console.log(retval);
+        // console.log(retval);
         this.setState({
           courseDesc: retval.data.description.slice(),
         })
